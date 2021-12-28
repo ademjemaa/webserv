@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Webserver</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        html, body {
+  background: #485563; 
+  background: linear-gradient(
+    to left, 
+    #485563,
+    #29323c); 	
+  margin:0;
+  text-align: center;
+  text-transform: uppercase;
+  background-position: center;
+  font-family: 'Space Mono', monospace;
+}
+
+h1 {
+	color: #fff;
+	font-size: 68px;
+	font-size: 5.5vw;
+	width: 100%;
+	display: inline-flex;
+    justify-content: center;
+    letter-spacing: 8px;
+}
+h1 span:nth-child(6) {
+  margin-right: 30px;
+}
+h2 {
+	font-weight: 500;
+	font-size: 27px;
+	font-size: 2vw;
+	margin: 0 auto;
+	color: #fff;
+	width: 100%;
+	text-align: center;
+}
+.subtitle span {
+  opacity: 0;
+}
+
+ul {
+	list-style: none;
+	display: block;
+}
+
+a {
+	color: #fd3267;
+}
+
+.wrapper {
+	min-height: 500px;
+}
+
+.logo {
+	text-align: center;
+	width: 100%;
+}
+
+ul.countdown {
+  opacity: 0;
+	margin-top: 40px;
+	text-align: center;
+	padding: 0;
+	margin-bottom: 0;
+	width: 100%;
+}
+ul.countdown li {
+	display: inline-block;
+	margin-right: 3%;
+	text-align: center;
+}
+ul.countdown li span {
+	font-size: 72px;
+	font-size: 5.8vw;
+	width: 150px;
+	letter-spacing: 5px;
+	font-weight: 300;
+	color: #fff;
+}
+ul.countdown li p {
+	font-size: 14px;
+	margin-bottom: 0;
+}
+ul.countdown li:last-child {
+	margin-right: 0;
+}
+
+.days_ref { color: #2ECC71 }
+.hours_ref { color: #fd3267 }
+.minutes_ref { color: #9B59B6 }
+.seconds_ref { color: #3498DB }
+
+form {
+  opacity: 0;
+	text-align: center;
+	width: 100%;
+	margin-top: 60px;
+}
+
+form input[type="text"] {
+	width: 22%;
+	padding: 16px;
+	font-size: 0.85em;
+	color: #fff;
+	outline: none;
+	font-weight: 600;
+	background: none;
+	border: 1px solid#FFFFFF;
+	transition: border-color 0.5s;
+}
+
+form input[type="text"]:focus{
+	background: rgba(255,255,255, 0.3);
+}
+
+form input[type="submit"] {
+	font-family: 'Space Mono', monospace;
+	border: 1px solid #FD3267;
+	padding: 16px 16px;
+	font-size: 0.85em;
+	transition: 0.5s all;
+	background: none;
+	color: #FD3267;
+	outline: none;
+	cursor: pointer;
+	margin-left: 15px;
+}
+
+form input[type="submit"]:hover {
+	border: 1px solid #D11250;
+	color: #D11250;
+}
+
+@media screen and (max-width: 500px) {
+	h2 {
+		font-size: 3.5vw
+	}
+}   
+    </style>
+     <link rel="stylesheet prefetch" href="https://preview.codepad.co/css/normalize.min.css">
+     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.downCount/1.0.0/jquery.downCount.min.js"></script>
+<link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Space+Mono">
+</head>
+<body>
+    <div class="wrapper">
+
+        <h1 class="title">
+          <span style="color: #fd3267">C</span>
+          <span style="color: #66D9EF">o</span>
+          <span style="color: #A6E22E">m</span>
+          <span style="color: #FD971F">i</span>
+          <span style="color: #9B59B6">n</span>
+          <span style="color: #1ABC9C">g</span>
+          
+          <span style="color: #A6E22E">s</span>
+          <span style="color: #fd3267">o</span>
+          <span style="color: #fd3267">o</span>
+          <span style="color: #3498DB">n</span>
+          <span style="color: #9B59B6">!</span>
+        </h1>
+        <h2 class="subtitle">
+          <span>Be</span> 
+          <span>ready,</span>
+          <span>there</span>
+          <span>is just:</span>
+        </h2>
+      
+        <ul class="countdown">
+          <li>
+            <span class="days">OO</span>
+            <p class="days_ref">days</p>
+          </li>
+          <li>
+            <span class="hours">OO</span>
+            <p class="hours_ref">hours</p>
+          </li>
+          <li>
+            <span class="minutes">OO</span>
+            <p class="minutes_ref">minutes</p>
+          </li>
+          <li>
+            <span class="seconds">OO</span>
+            <p class="seconds_ref">seconds</p>
+          </li>
+        </ul>
+      
+      
+      </div>
+      <div class="countdown">
+          <a href="/image.jpeg">See me naked</a>
+          <a href="/upload.html">See my test page</a>
+      </div>
+      <script>
+          $(document).ready(function(){
+  TweenMax.staggerFrom(
+  ".title span", 2, {
+    scale: 0.1, 
+    opacity: 0, 
+    delay: 0.2, 
+    ease:Elastic.easeOut, 
+    force3D: true }, 0.2);
+
+  function complete() { 
+    TweenMax.staggerTo(
+      ".countdown, form",2, { 
+      opacity: 1, 
+      ease:SlowMo.easeInOut, 
+      force3D: true }, 2);
+  };
+
+  setTimeout( function() { 
+    TweenMax.staggerTo(".subtitle span",2, { 
+      scale: 0.1, 
+      opacity: 1, 
+      delay: 0.2, 
+      ease:Elastic.easeOut, 
+      force3D: true, 
+      onComplete: complete
+    }, 0.2);
+  }, 2400);  
+    
+  // Get the date
+  function e() {
+      var e = new Date;
+      e.setMilliseconds((Date.parse("12/10/2021")) - e.getTime() + 3600*24);
+
+      var dd = e.getDate();
+      var mm = e.getMonth() + 1;
+      var y = e.getFullYear();
+
+      var futureFormattedDate = mm + "/" + dd + "/" + y + ' 00:00:00';
+      return futureFormattedDate;
+  }
+
+  $('.countdown').downCount({
+      date: e(),
+      offset: 1
+  });
+}); 
+      </script>
+</body>
+</html>
